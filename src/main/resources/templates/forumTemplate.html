@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${forum.title}">Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/css/forum_style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" method="post">
+        <button  class="logout-btn"type="submit">Logout</button>
+    </form>
+</div>
+<section class="main">
+    <fieldset class="breadcrumb">
+        <a href="/"><span>Forums</span></a>
+        <span class="arrow"><span>&gt;</span></span>
+        <span th:text="${forum.title}" style="font-weight: 600">Forum title</span>
+    </fieldset>
+
+    <div th:text="${forum.description}" class="panel-container">Unity 2017.4 has arrived! Read about it here!</div>
+    <div class="title-bar">
+        <h1 th:text="${forum.title}">Title</h1>
+    </div>
+
+    <div class="form-main">
+        <table class="lists-of-threads">
+            <tr>
+                <th>Titles</th>
+                <th>Replies</th>
+                <th>Views</th>
+                <th>Last Message ↓</th>
+            </tr>
+            <tr th:each="thread : ${forum.threads}">
+                <td><a th:href="@{/forums/{forumId}/threads/{threadId}(forumId=${forum.id},threadId=${thread.id})}" th:text="${thread.title}" /></td>
+                <td th:text="${thread.replies}"></td>
+                <td th:text="${thread.views}"></td>
+                <td th:text="${thread.author.userName}"></td>
+            </tr>
+        </table>
+        <div sec:authorize="isAuthenticated() and hasRole('ADMIN')">
+            <button class="btnThread" onclick="document.getElementById('myModal').style.display='block'"
+                    style="width:auto;">New thread
+            </button>
+        </div>
+        <div id="myModal" class="modal">
+            <form class="modal-content animate" th:object="${newThread}" th:action="@{/forums/{forumId}/threads(forumId=${forum.id})}" method="post">
+                <div class="imgcontainer">
+            <span onclick="document.getElementById('myModal').style.display='none'" class="close"
+                  title="Close Modal">&times;</span>
+                </div>
+
+                <div class="container">
+                    <div>Title thread</div>
+                    <textarea rows="1" cols="50" th:field="*{title}"></textarea>
+                    <div>Description</div>
+                    <textarea rows="3" cols="50" th:field="*{description}"></textarea>
+                    <button type="submit">Add Thread</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

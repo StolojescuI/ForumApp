@@ -1,0 +1,203 @@
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 1.8rem 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.lists-of-threads {
+    width: 85%;
+    float: left;
+}
+
+.btnThread {
+    margin-left: 2rem;
+    margin-top: 3.5rem;
+}
+
+th {
+    text-align: left;
+}
+
+td, th {
+    padding: 0.8rem;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: darkblue;
+}
+
+.main {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.node-icon-news,
+.node-icon-collab,
+.node-icon-game,
+.node-icon-graph {
+    float: left;
+    width: 75px;
+    height: 75px;
+}
+
+button {
+    background-color: darkblue;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.login-btn,
+.logout-btn {
+    position: absolute;
+    right: 50px;
+    width: auto;
+}
+
+hr {
+    border-bottom: 1px solid #888888;
+}
+
+.panel-container {
+    background-color: azure;
+    height: 40px;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+}
+
+.title-bar {
+    border-top: 1px solid #888888;
+    margin-top: 1.5rem;
+}
+
+.section-headers,
+.discussion-lists {
+    font-size: 1.3rem;
+    background-color: aliceblue;
+    padding: 0.5rem 1rem;
+    margin: 0 auto;
+    display: table;
+    width: 100%;
+    height: 30px;
+}
+
+.title,
+.stats.a {
+    display: block;
+    float: left;
+    width: 50%;
+}
+
+.breadcrumb {
+    border-radius: 1rem;
+    height: 1.5rem;
+    background-color: aliceblue;
+    color: dimgray;
+    padding: 1.5rem;
+    border: 1px solid azure;
+    margin-top: 2rem;
+    height: 50px;
+}
+
+.breadcrumb a {
+    color: dimgray;
+    text-decoration: none;
+}
+
+.node-form-level-1,
+.node-form-level-2 {
+    width: 50%;
+    float: left;
+    padding: 2rem 0;
+    border-bottom: 1px solid #cccccc;
+
+}
+
+.node-icon {
+    background-repeat: no-repeat;
+    height: 75px;
+}
+
+.form-lists {
+    list-style-type: none;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 2.5rem;
+    width: 500px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Title</title>
+    <link href="/css/forum_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div sec:authorize="isAnonymous()" >
+<button class="login-btn" onclick="document.getElementById('login-modal').style.display='block'" style="width:auto;">Login
+</button>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" method="post">
+        <button  class="logout-btn"type="submit">Logout</button>
+    </form>
+</div>
+
+
+<div id="login-modal" class="modal">
+    <form class="modal-content animate" th:action="@{/login}" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('login-modal').style.display='none'" class="close"
+                  title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name='user' required>
+
+            <label ><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name='password' required>
+
+            <button type="submit">Login</button>
+        </div>
+    </form>
+</div>
+
+<section class="main">
+    <fieldset class="breadcrumb">
+        <a href="#"><span>Forums</span></a>
+    </fieldset>
+    <div class="form-title">
+        <h1>Lists of forms </h1>
+    </div>
+
+    <ol class="form-lists" th:if="${not #lists.isEmpty(forums)}" th:each="forum : ${forums}">
+        <li class="node-form-level-1">
+            <div class="node-icon" th:style="@{'background-image: url(' + ${forum.pictureUri} + ')'}">
+            </div>
+            <span class="form-text">
+                <a th:href="'forums/' + ${forum.id}"><h3 th:text="${forum.title}"></h3></a>
+
+            </span>
+        </li>
+     </ol>
+</section>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
